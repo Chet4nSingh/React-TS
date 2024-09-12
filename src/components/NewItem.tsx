@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
+import { ItemsContext } from "../store/ItemsContext";
 
-const NewItem: React.FC<{ addNewItem: (text: string) => void }> = (props) => {
+const NewItem = () => {
+  const { addItem } = useContext(ItemsContext);
   const input: React.RefObject<HTMLInputElement> =
     useRef<HTMLInputElement>(null);
 
@@ -13,7 +15,7 @@ const NewItem: React.FC<{ addNewItem: (text: string) => void }> = (props) => {
       return;
     }
 
-    props.addNewItem(enteredItem);
+    addItem(enteredItem);
     input.current!.value = "";
   }
 

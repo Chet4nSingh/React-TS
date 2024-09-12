@@ -1,6 +1,6 @@
-import { useState } from "react";
 import List from "./components/List";
 import NewItem from "./components/NewItem";
+import ItemsContextProvider from "./store/ItemsContext";
 
 const LIST_ITEMS = [
   {
@@ -26,25 +26,13 @@ const LIST_ITEMS = [
 ];
 
 function App() {
-  const [list, setList] = useState<{ name: string }[]>([]);
-
-  const handleAddNewItem = (newItem: string) => {
-    setList((prevItems) => {
-      return [...prevItems, { name: newItem }];
-    });
-  };
-
-  const handleRemoveItem = (name: string) => {
-    setList(prevList => {
-      return prevList.filter((item) => item.name !== name);
-    })
-  };
-
   return (
-    <main className="w-full h-screen bg-sky-800 text-white flex flex-col justify-center items-center">
-      <NewItem addNewItem={handleAddNewItem} />
-      <List items={list} onRemoveItem={handleRemoveItem} />
-    </main>
+    <ItemsContextProvider>
+      <main className="w-full h-screen bg-sky-800 text-white flex flex-col justify-center items-center">
+        <NewItem />
+        <List />
+      </main>
+    </ItemsContextProvider>
   );
 }
 

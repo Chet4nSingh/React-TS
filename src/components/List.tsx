@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import ListItem from "./ListItem";
+import { ItemsContext } from "../store/ItemsContext";
 
-const List: React.FC<{
-  items: { name: string }[];
-  onRemoveItem: (name: string) => void;
-}> = (props) => {
+const List = () => {
+  const {items, removeItem} = useContext(ItemsContext);
   return (
     <ul className="text-4xl w-1/2 flex flex-col items-center gap-4">
-      {props.items.map((item) => (
-        <ListItem key={item.name} item={item} onRemoveItem={props.onRemoveItem} />
+      {items.map((item) => (
+        <ListItem key={item.name} item={item} onRemoveItem={removeItem} />
       ))}
     </ul>
   );
