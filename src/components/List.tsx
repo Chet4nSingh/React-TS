@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ListItem from "./ListItem";
 import { ItemsContext } from "../store/ItemsContext";
 

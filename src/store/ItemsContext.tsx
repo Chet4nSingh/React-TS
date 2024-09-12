@@ -1,4 +1,4 @@
-import React, { createContext, FunctionComponent, ReactNode, useState } from "react";
+import { createContext, FunctionComponent, ReactNode, useState } from "react";
 
 type ItemsContextObj = {
   items: { name: string }[];
@@ -9,7 +9,7 @@ type ItemsContextObj = {
 export const ItemsContext = createContext<ItemsContextObj>({
   items: [],
   addItem: () => {}, 
-  removeItem: (name: string) => {},
+  removeItem: () => {},
 });
 
 const ItemsContextProvider: FunctionComponent<{ children?: ReactNode }> = ({children}) => {
