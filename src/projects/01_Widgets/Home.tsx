@@ -28,10 +28,15 @@ function Home() {
   }
 
   return (
-    <main className="bg-zinc-900 text-slate-200 w-[50%] md:w-[30%] mt-60 mx-auto rounded-md">
-      <Header selected={selectedIndex} onSelectIcon={handleSelectIcon} />
-      <Content title={DATA[selectedIndex].title} description={DATA[selectedIndex].description} />
-    </main>
+    <div className="container w-full grid place-items-center h-screen bg-zinc-800">
+      <main className="bg-zinc-900 text-slate-200 w-[50%] md:w-[30%] rounded-md">
+        <Header selected={selectedIndex} onSelectIcon={handleSelectIcon} />
+        <Content
+          title={DATA[selectedIndex].title}
+          description={DATA[selectedIndex].description}
+        />
+      </main>
+    </div>
   );
 }
 
